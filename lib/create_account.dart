@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:namer_app/create_account.dart';
+import 'package:namer_app/auth_service.dart';
+import 'package:namer_app/main.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class CreateAccount extends StatefulWidget {
+  const CreateAccount({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _CreateAccountState createState() => _CreateAccountState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _CreateAccountState extends State<CreateAccount> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text('Create Account'),
         centerTitle: true,
       ),
       body: Center(
@@ -46,20 +48,18 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 30.0,
             ),
             ElevatedButton(
-              onPressed: () {
-                print(
-                    'Email: ${_emailController.text}, Password: ${_passwordController.text}');
-              },
-              child: const Text('Login'),
-            ),
-            const SizedBox(
-              height: 30.0,
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const CreateAccount(),
+              onPressed: () async {
+                final message = await AuthService().registration(
+                  email: _emailController.text,
+                  password: _passwordController.text,
+                );
+                if (message!.contains('Success')) {
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => MyHomePage()));
+                }
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(message),
                   ),
                 );
               },
