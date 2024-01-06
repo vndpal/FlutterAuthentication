@@ -17,3 +17,4 @@ samples, guidance on mobile development, and a full API reference.
 
 references
 - https://medium.com/google-developer-experts/firebase-authentication-flutter-80e8f00338ac
+- https://firebase.google.com/codelabs/firebase-auth-in-flutter-apps#1
