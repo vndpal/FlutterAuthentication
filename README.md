@@ -1,6 +1,6 @@
-# flutter_application_1
+# flutter project to demostrate offline authentication
 
-A new Flutter project.
+This is demo project that demostrates flutter firebase authentation in offline scenario
 
 ## Getting Started
 
@@ -15,7 +15,3 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-references
-- https://medium.com/google-developer-experts/firebase-authentication-flutter-80e8f00338ac
-- https://firebase.google.com/codelabs/firebase-auth-in-flutter-apps#1
-- https://medium.com/@omer28gunaydin/flutter-secure-storage-f772186ac8d3
